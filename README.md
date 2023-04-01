@@ -20,5 +20,7 @@ docker container run -p 8000:8000 -e exercise_toekn=<your_token> dnbexecrcise
 There is several files under src:
 1. _\_main.py\__ - starting point
 1. _stocks/models.py_ - Define the models of the the app
-1. _utils.py_ - Utilities which the app is using
-1. _router.py_ - The actual methods when getting _GET_ or _POST_ request.
+1. _stocks/utils.py_ - Utilities which the app is using
+1. _stocks/router.py_ - The actual methods when getting _GET_ or _POST_ requests.
+
+A few tests found under the _tests/stocks_ folder.
