@@ -63,18 +63,16 @@ async def get_stock_open_close_data(
 def scarping_data(html_text) -> dict[str, str]:
     def performance_text_key_value(tr: Node) -> tuple[str, str]:
         k, v = tr.css("td.table__cell")
-        return k.text(), v.text().strip()
+        return k.text().strip(), v.text().strip()
 
-    tree: HTMLParser = HTMLParser(html_text)
-
-    div_performance: list[Node] = tree.css(
+    div_performance: list[Node] = HTMLParser(html_text).css(
         "div.performance > table > tbody > tr"
     )
 
     return dict([performance_text_key_value(tr) for tr in div_performance])
 
 
-async def get_stock_performance_data(stock_symbol: str) -> dict:
+async def get_stock_performance_data(stock_symbol: str) -> dict[str, str]:
     stock_performance_url: str = "/".join([PERFORMANCE_BASE_URL, stock_symbol])
 
     response: httpx.Response = await make_async_get_request(
