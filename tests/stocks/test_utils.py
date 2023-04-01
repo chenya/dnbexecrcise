@@ -22,10 +22,6 @@ def test_scarping_data_expected_result_same_values(html_sample) -> None:
         "1 Year": "-6.39%",
     }
     sdata: dict[str, str] = scarping_data(html_sample)
-    # assert all(
-    #     sdata.get(i) is not None and sdata[i] == expected_result[i]
-    #     for i in expected_result
-    # )
     assert set(expected_result.values()) ^ set(sdata.values()) == set()
 
 

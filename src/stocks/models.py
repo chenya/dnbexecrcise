@@ -4,6 +4,8 @@ from pydantic import BaseModel
 
 
 class StockPerformance(BaseModel):
+    """Represent the stock performance data from marketwatch"""
+
     five_days: str
     one_month: str
     three_months: str
@@ -22,6 +24,8 @@ class StockPerformance(BaseModel):
 
 
 class Stock(BaseModel):
+    """The stock model"""
+
     afterHours: float
     close: float
     from_: date

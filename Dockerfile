@@ -1,6 +1,6 @@
 FROM python:3.10
 
-WORKDIR /dnbexecrcise
+WORKDIR /app
 
 COPY requirements.txt ./
 
@@ -11,4 +11,3 @@ EXPOSE 8000
 COPY ./ ./
 
 CMD ["python", "src/main.py"]
-# CMD ["/bin/ls -l"]

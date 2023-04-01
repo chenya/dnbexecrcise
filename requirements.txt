@@ -1,14 +1,7 @@
-mypy
-black
-pydantic
-httpx
-#scraping
-beautifulsoup4
-#web server
 fastapi
-uvicorn
-#test libs
+httpx
+pydantic
 pytest
 pytest-asyncio
 selectolax
-
+uvicorn
