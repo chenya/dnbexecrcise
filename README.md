@@ -24,3 +24,7 @@ There is several files under src:
 1. _stocks/router.py_ - The actual methods when getting _GET_ or _POST_ requests.
 
 A few tests found under the _tests/stocks_ folder.
+
+### Known Issues
+* The token is valid for 5 requests in a minute. Because of that could be issues with some tests which will fail. wait a minute and continue with the tests.
+* If you want to run pytest on the local machine you need to set environment variable called _exercise_toekn_ with the token as the value
