@@ -1,8 +1,8 @@
 import httpx
 import pytest
 from datetime import date
-from dnbexecrcise.src.stocks.models import StockPerformance
-from dnbexecrcise.src.stocks.utils import (
+from ...src.stocks.models import StockPerformance
+from ...src.stocks.utils import (
     PERFORMANCE_BASE_URL,
     REST_BASE_URL,
     REST_HEADERS,

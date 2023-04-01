@@ -1,7 +1,7 @@
 import httpx
 import pytest
 
-from dnbexecrcise.src.stocks.models import Stock, StockPerformance
+from ...src.stocks.models import Stock, StockPerformance
 
 
 @pytest.fixture(scope="module")
