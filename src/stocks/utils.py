@@ -3,9 +3,10 @@ from datetime import date, timedelta
 import httpx
 from selectolax.parser import HTMLParser, Node
 import asyncio
+import os
 
 REST_BASE_URL: str = "https://api.polygon.io/v1/open-close"
-REST_HEADERS = {"Authorization": "Bearer bs1n5Vdqoi_NOvmCZ_85rrcvtFnYN3vm"}
+REST_HEADERS = {"Authorization": f"Bearer {os.getenv('exercise_toekn')}"}
 PERFORMANCE_BASE_URL = "https://www.marketwatch.com/investing/stock"
 
 
