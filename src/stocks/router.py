@@ -4,10 +4,14 @@ from stocks.utils import get_stock_open_close_data, get_stock_performance_data
 
 stocks_router: APIRouter = APIRouter(tags=["Stocks"])
 stocks_record: dict[str, int] = {}
+stocks_cache: dict[str, Stock] = {}
 
 
 @stocks_router.get("/{stock_symbol}")
 async def retrieve_stock_data(stock_symbol: str) -> Stock:
+    if stocks_cache.get(stock_symbol):
+        return stocks_cache[stock_symbol]
+
     try:
         stock_open_close_data: dict = await get_stock_open_close_data(
             stock_symbol
@@ -25,11 +29,13 @@ async def retrieve_stock_data(stock_symbol: str) -> Stock:
     if stocks_record.get(stock_symbol):
         amount = stocks_record[stock_symbol]
 
-    return Stock(
+    stocks_cache[stock_symbol] = Stock(
         **stock_open_close_data,
         performance=StockPerformance(**stock_performance_data),
         amount=amount,
     )
+
+    return stocks_cache[stock_symbol]
 
 
 @stocks_router.post(
