@@ -32,13 +32,13 @@ async def retrieve_stock_data(stock_symbol: str) -> Stock:
     if stocks_record.get(stock_symbol):
         amount = stocks_record[stock_symbol]
 
-    stocks_cache[stock_symbol] = Stock(
+    stock: Stock = Stock(
         **stock_open_close_data,
         performance=StockPerformance(**stock_performance_data),
         amount=amount,
     )
 
-    return stocks_cache[stock_symbol]
+    return stock
 
 
 @stocks_router.post(
