@@ -16,7 +16,7 @@ async def retrieve_stock_data(stock_symbol: str) -> Stock:
     except:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Stock {stock_symbol} open close  not found",
+            detail=f"Stock {stock_symbol} open close  not found",
         )
     try:
         stock_performance_data: dict = await get_stock_performance_data(
@@ -25,7 +25,7 @@ async def retrieve_stock_data(stock_symbol: str) -> Stock:
     except:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Stock {stock_symbol} performance data not found",
+            detail=f"Stock {stock_symbol} performance data not found",
         )
 
     amount: int = 0
