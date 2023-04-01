@@ -4,25 +4,28 @@ from stocks.utils import get_stock_open_close_data, get_stock_performance_data
 
 stocks_router: APIRouter = APIRouter(tags=["Stocks"])
 stocks_record: dict[str, int] = {}
-stocks_cache: dict[str, Stock] = {}
 
 
 @stocks_router.get("/{stock_symbol}")
 async def retrieve_stock_data(stock_symbol: str) -> Stock:
-    if stocks_cache.get(stock_symbol):
-        return stocks_cache[stock_symbol]
-
     try:
         stock_open_close_data: dict = await get_stock_open_close_data(
             stock_symbol
         )
+
+    except:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Stock {stock_symbol} open close  not found",
+        )
+    try:
         stock_performance_data: dict = await get_stock_performance_data(
             stock_symbol
         )
     except:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Stock {stock_symbol} not found",
+            detail="Stock {stock_symbol} performance data not found",
         )
 
     amount: int = 0
