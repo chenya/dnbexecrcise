@@ -11,7 +11,6 @@ PERFORMANCE_BASE_URL = "https://www.marketwatch.com/investing/stock"
 
 
 def previuos_day_date(day: date | None = None, days: int = 1) -> str:
-    # return "2023-03-29"
     day_date: date = date.today() - timedelta(days=days)
     if day is not None:
         day_date = day - timedelta(days=days)
