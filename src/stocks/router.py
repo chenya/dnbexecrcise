@@ -1,15 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
-
-from stocks.models import (
-    Amount,
-    PostRequestMessage,
-    Stock,
-    StockPerformance,
-)
-from stocks.utils import (
-    get_stock_open_close_data,
-    get_stock_performance_data,
-)
+from stocks.models import Amount, PostRequestMessage, Stock, StockPerformance
+from stocks.utils import get_stock_open_close_data, get_stock_performance_data
 
 stocks_router: APIRouter = APIRouter(tags=["Stocks"])
 stocks_record: dict[str, int] = {}

@@ -2,9 +2,9 @@ import asyncio
 
 import httpx
 import pytest
-from ...src.stocks.models import StockPerformance
 
 from ...src.main import app
+from ...src.stocks.models import StockPerformance
 
 
 @pytest.fixture(scope="session")

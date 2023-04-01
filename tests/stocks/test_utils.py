@@ -1,6 +1,8 @@
+from datetime import date
+
 import httpx
 import pytest
-from datetime import date
+
 from ...src.stocks.models import StockPerformance
 from ...src.stocks.utils import (
     PERFORMANCE_BASE_URL,

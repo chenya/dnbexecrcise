@@ -1,9 +1,9 @@
+import asyncio
+import os
 from datetime import date, timedelta
 
 import httpx
 from selectolax.parser import HTMLParser, Node
-import asyncio
-import os
 
 REST_BASE_URL: str = "https://api.polygon.io/v1/open-close"
 REST_HEADERS = {"Authorization": f"Bearer {os.getenv('exercise_toekn')}"}
