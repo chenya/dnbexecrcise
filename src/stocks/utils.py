@@ -11,6 +11,11 @@ PERFORMANCE_BASE_URL = "https://www.marketwatch.com/investing/stock"
 
 
 def previuos_day_date(day: date | None = None, days: int = 1) -> str:
+    """
+    Return the previuos ``days`` isoformat(YYYY-MM-DD) date.
+    for ``day.isoformat() == '2023-03-10'`` and ``days == 3``
+    the return will be '2023-03-07'
+    """
     day_date: date = date.today() - timedelta(days=days)
     if day is not None:
         day_date = day - timedelta(days=days)
@@ -21,6 +26,9 @@ def previuos_day_date(day: date | None = None, days: int = 1) -> str:
 async def make_async_get_request(
     url: str, headers: dict | None = None
 ) -> httpx.Response:
+    """
+    Perform a simple async http get request using httpx.AsyncClient
+    """
     async with httpx.AsyncClient() as client:
         response = await client.get(
             url,
@@ -33,6 +41,11 @@ async def make_async_get_request(
 async def get_stock_open_close_data(
     stock_symbol: str, day: date | None = None
 ) -> dict:
+    """
+    Get the stock open-close data.
+    It will run 7 times, each time on the previous day because there is
+    days without stock trading.
+    """
     retries: int = 1
     num_retries: int = 7
     while retries < num_retries:
@@ -60,6 +73,10 @@ async def get_stock_open_close_data(
 
 
 def scarping_data(html_text) -> dict[str, str]:
+    """
+    Scarping the data using css classes in the html tags
+    """
+
     def performance_text_key_value(tr: Node) -> tuple[str, str]:
         k, v = tr.css("td.table__cell")
         return k.text().strip(), v.text().strip()
@@ -72,6 +89,9 @@ def scarping_data(html_text) -> dict[str, str]:
 
 
 async def get_stock_performance_data(stock_symbol: str) -> dict[str, str]:
+    """
+    Retrieve the stock performance data
+    """
     stock_performance_url: str = "/".join([PERFORMANCE_BASE_URL, stock_symbol])
 
     response: httpx.Response = await make_async_get_request(

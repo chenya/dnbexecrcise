@@ -17,3 +17,8 @@ docker container run -p 8000:8000 -e exercise_toekn=<your_token> dnbexecrcise
 1. _pytest_ for running the unittests also added a script file for testing multiple request on different stock symbols.
 
 
+There is several files under src:
+1. _\_main.py\__ - starting point
+1. _stocks/models.py_ - Define the models of the the app
+1. _utils.py_ - Utilities which the app is using
+1. _router.py_ - The actual methods when getting _GET_ or _POST_ request.
