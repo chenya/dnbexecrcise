@@ -1,0 +1,14 @@
+mypy
+black
+pydantic
+httpx
+#scraping
+beautifulsoup4
+#web server
+fastapi
+uvicorn
+#test libs
+pytest
+pytest-asyncio
+selectolax
+
